@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-
+[Serializable]
 public class Grid<TGridObject>
 {
 
@@ -64,7 +64,7 @@ public class Grid<TGridObject>
 
     public TGridObject GetGridObject(int x, int y, int z)
     {
-        if (x >= 0 && y >= 0 && z >= 0 && x < _width && y < _height && z < _depth)
+        if (x >= 0 && y >= 0 && z >= 0 && x < _width && y < _height  && z < _depth )
         {
             return _gridArray[x, y, z];
         }
@@ -94,7 +94,7 @@ public class Grid<TGridObject>
         SetGridObject(x, y, z, value);
     }
 
-    private void GetXYZ(Vector3 worldPosition, out int x, out int y, out int z)
+    public void GetXYZ(Vector3 worldPosition, out int x, out int y, out int z)
     {
         x = Mathf.FloorToInt((worldPosition.x - _originPosition.x) / _cellSize);
         y = Mathf.FloorToInt((worldPosition.y - _originPosition.y) / _cellSize);
@@ -164,6 +164,10 @@ public class Grid<TGridObject>
         {
             debugTextArray[eventArgs.x, eventArgs.y, eventArgs.z].text = _gridArray[eventArgs.x, eventArgs.y, eventArgs.z].ToString();
         };
+    }
+    public TGridObject[,,] GetGridArray()
+    {
+        return _gridArray;
     }
     public Vector3 GetCellCenter(int x, int y, int z)
     {

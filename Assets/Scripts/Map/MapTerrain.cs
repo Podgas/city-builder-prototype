@@ -37,5 +37,9 @@ public class MapTerrain
     {
         return _grid.GetWorldPosition(_gridPosition.x, _gridPosition.y, _gridPosition.z);
     }
+    public TerrainTypes GetTerrainType()
+    {
+        return _terrainType;
+    }
 
 }

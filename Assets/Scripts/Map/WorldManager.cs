@@ -110,6 +110,11 @@ public class WorldManager : MonoBehaviour
     {
         return worldCenter;
     }
+    public Grid<MapTerrain> GetGrid()
+    {
+        return _worldGrid;
+    } 
+
     [System.Serializable]
    
     #region ITERATE PARENT CHILDREN TO CLEAR OBJECTS
